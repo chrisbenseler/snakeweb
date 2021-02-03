@@ -1,6 +1,6 @@
-const Snake = require("./snake");
+import { Snake } from "./snake.js";
 
-const Board = (size = 16) => {
+const Board = ({ size = 16 }) => {
   const _board = {};
 
   Array(size)
@@ -36,10 +36,9 @@ const Board = (size = 16) => {
     tick: () => {
       snake.move();
       update();
-      console.log("snack has moved");
+      // console.log("snack has moved");
     },
-    
   };
 };
 
-module.exports = Board
+export { Board };
