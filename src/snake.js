@@ -49,6 +49,7 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
     return Snake({ headCoordinates: { x: 5, y: 5 } });
   };
   
+  /*
   let snake = deliverSnake();
   
   snake.grow(1);
@@ -60,4 +61,6 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
   snake.changeDirection("TOP");
   snake.move();
   snake.log();
+  */
+ module.exports = Snake
   
