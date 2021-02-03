@@ -42,9 +42,4 @@ const Board = (size = 16) => {
   };
 };
 
-const board = Board(16);
-board.tick();
-board.tick();
-board.tick();
-board.tick();
-console.log(board.status());
+module.exports = Board

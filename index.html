@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Snake</title>
+    <style>
+        #board-container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            display: grid;
+            grid-gap: 0;
+            grid-template-rows: repeat(16, 1fr);
+            grid-template-columns: repeat(16, 1fr);
+        }
+        #board-container div.cell {
+            border: 1px solid blue;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var boardContainer = document.getElementById("board-container");
+
+            var cells = {};
+
+            for (var iX = 0; iX < 16; iX++) {
+                for (var iY = 0; iY < 16; iY++) {
+                    var cell = document.createElement("div");
+                    cell.className = "cell";
+                    cells[iX + "_" + iY] = cell;
+                    boardContainer.appendChild(cell);
+                }
+            }
+            console.log(cells)
+        });
+    </script>
+</head>
+
+<body>
+    <div id="board-container"></div>
+</body>
+
+</html>
