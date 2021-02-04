@@ -27,10 +27,10 @@ const Board = ({ size = 16 }) => {
     });
 
     const head = snake.head();
-    if((head.x + "_" + head.y) === currentFood) {
+    if (head.x + "_" + head.y === currentFood) {
       snake.grow();
+      _board[currentFood].food = false;
       currentFood = null;
-      _board["12_5"].food = false;
     }
   };
 
@@ -43,9 +43,10 @@ const Board = ({ size = 16 }) => {
       (key) => snakeCoords.indexOf(key) < 0
     );
 
-    //_board[emptyCells[0]].food = true;
-    _board["12_5"].food = true;
-    currentFood = "12_5";
+    const randmon = _randomItem(emptyCells);
+    console.log("Adding food in board: ", randmon);
+    _board[randmon].food = true;
+    currentFood = randmon;
   };
 
   update();
@@ -64,5 +65,7 @@ const Board = ({ size = 16 }) => {
     },
   };
 };
+
+const _randomItem = (items) => items[Math.floor(Math.random() * items.length)];
 
 export { Board };
