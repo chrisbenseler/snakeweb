@@ -35,9 +35,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateDraw();
 
-  arrowsListener({ board: currentBoard });
+  let newDirection = null;
+
+  arrowsListener({
+    cb: (_direction) => {
+      newDirection = _direction;
+    },
+  });
 
   setInterval(function () {
+    if (newDirection) {
+      try {
+        currentBoard.snake.changeDirection(newDirection);
+      } catch (e) {}
+      newDirection = null;
+    }
     currentBoard.tick();
     updateDraw();
   }, 1000);
@@ -58,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
   */
 });
 
-function arrowsListener({ board }) {
+function arrowsListener({ cb }) {
   const MOVES = {
     ArrowUp: "UP",
     ArrowDown: "DOWN",
@@ -71,7 +83,7 @@ function arrowsListener({ board }) {
     if (!dataset) {
       return false;
     }
-    board.snake.changeDirection(dataset.direction.toUpperCase());
+    cb(dataset.direction.toUpperCase());
   });
 
   document.addEventListener("keyup", function (event) {
@@ -81,6 +93,6 @@ function arrowsListener({ board }) {
       return;
     }
 
-    board.snake.changeDirection(direction);
+    cb(direction);
   });
 }
