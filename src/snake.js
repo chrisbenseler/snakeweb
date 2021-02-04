@@ -23,6 +23,21 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
       tail = [_currentHead, ...tail].slice(0, tailLength);
     },
     changeDirection: (key) => {
+      if (!MOVES.hasOwnProperty(key)) {
+        throw new RangeError("Invalid direction");
+      }
+
+      if (key === currentDirection) {
+        throw new Error("Snake is already in this direction");
+      }
+      if (
+        (key == "UP" && currentDirection === "DOWN") ||
+        (key == "DOWN" && currentDirection === "UP") ||
+        (key == "RIGHT" && currentDirection === "LEFT") ||
+        (key == "LEFT" && currentDirection === "RIGHT")
+      ) {
+        throw new Error("Snake cannot move backwards");
+      }
       currentDirection = key;
     },
     grow(step = 1) {
