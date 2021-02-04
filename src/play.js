@@ -35,37 +35,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateDraw();
 
-  setTimeout(() => {
+  setInterval(function () {
     currentBoard.tick();
     updateDraw();
   }, 1000);
-  setTimeout(() => {
-    currentBoard.tick();
-    updateDraw();
-  }, 2000);
 
-
-  setTimeout(() => {
+  setTimeout(function () {
     currentBoard.snake.grow();
-    currentBoard.tick();
-    updateDraw();
-  }, 3000);
-
-  setTimeout(() => {
-    currentBoard.tick();
-    updateDraw();
-  }, 4000);
-
-  setTimeout(() => {
-    currentBoard.tick();
-    updateDraw();
-  }, 5000);
-
-  setTimeout(() => {
+  }, 2100);
+  setTimeout(function () {
+    currentBoard.snake.changeDirection("DOWN");
+  }, 3100);
+  setTimeout(function () {
     currentBoard.snake.grow();
-    currentBoard.tick();
-    updateDraw();
-  }, 6000);
-
-
+  }, 4100);
+  setTimeout(function () {
+    currentBoard.snake.changeDirection("LEFT");
+  }, 5100);
 });
