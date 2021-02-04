@@ -35,11 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateDraw();
 
+  arrowsListener({ board: currentBoard });
+
   setInterval(function () {
     currentBoard.tick();
     updateDraw();
   }, 1000);
 
+  /*
   setTimeout(function () {
     currentBoard.snake.grow();
   }, 2100);
@@ -52,4 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     currentBoard.snake.changeDirection("LEFT");
   }, 5100);
+  */
 });
+
+function arrowsListener({ board }) {
+    var container = document.getElementById("arrows");
+    container.addEventListener("click", function(event) {
+        var dataset = event.target.dataset;
+        if(!dataset) {
+            return false;
+        }
+        board.snake.changeDirection(dataset.direction.toUpperCase());
+    })
+}
