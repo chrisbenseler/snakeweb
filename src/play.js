@@ -17,6 +17,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var currentBoard = Board({ size: 16 });
 
+  start({ currentBoard, cells });
+
+  /*
+  setTimeout(function () {
+    currentBoard.snake.grow();
+  }, 2100);
+  setTimeout(function () {
+    currentBoard.snake.changeDirection("DOWN");
+  }, 3100);
+  setTimeout(function () {
+    currentBoard.snake.grow();
+  }, 4100);
+  setTimeout(function () {
+    currentBoard.snake.changeDirection("LEFT");
+  }, 5100);
+  */
+});
+
+function start({ currentBoard, cells }) {
   const updateDraw = () => {
     const status = currentBoard.status();
 
@@ -24,11 +43,21 @@ document.addEventListener("DOMContentLoaded", function () {
       (key) => status[key].snake === true
     );
 
+    const foods = Object.keys(status).filter(
+      (key) => status[key].food === true
+    );
+
     Object.keys(cells).forEach((key) => {
       if (coordinates.indexOf(key) >= 0) {
         cells[key].classList.add("hassnake");
       } else {
         cells[key].classList.remove("hassnake");
+      }
+
+      if (foods.indexOf(key) >= 0) {
+        cells[key].classList.add("hasfood");
+      } else {
+        cells[key].classList.remove("hasfood");
       }
     });
   };
@@ -54,21 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDraw();
   }, 1000);
 
-  /*
-  setTimeout(function () {
-    currentBoard.snake.grow();
-  }, 2100);
-  setTimeout(function () {
-    currentBoard.snake.changeDirection("DOWN");
-  }, 3100);
-  setTimeout(function () {
-    currentBoard.snake.grow();
-  }, 4100);
-  setTimeout(function () {
-    currentBoard.snake.changeDirection("LEFT");
-  }, 5100);
-  */
-});
+  setTimeout(() => {
+    currentBoard.addFood();
+  }, 5000);
+}
 
 function arrowsListener({ cb }) {
   const MOVES = {
