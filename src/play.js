@@ -59,12 +59,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function arrowsListener({ board }) {
-    var container = document.getElementById("arrows");
-    container.addEventListener("click", function(event) {
-        var dataset = event.target.dataset;
-        if(!dataset) {
-            return false;
-        }
-        board.snake.changeDirection(dataset.direction.toUpperCase());
-    })
+  const MOVES = {
+    ArrowUp: "UP",
+    ArrowDown: "DOWN",
+    ArrowRight: "RIGHT",
+    ArrowLeft: "LEFT",
+  };
+  var container = document.getElementById("arrows");
+  container.addEventListener("click", function (event) {
+    var dataset = event.target.dataset;
+    if (!dataset) {
+      return false;
+    }
+    board.snake.changeDirection(dataset.direction.toUpperCase());
+  });
+
+  document.addEventListener("keyup", function (event) {
+    const direction = MOVES[event.key];
+
+    if (!direction) {
+      return;
+    }
+
+    board.snake.changeDirection(direction);
+  });
 }
