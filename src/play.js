@@ -15,24 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  var currentBoard = Board({ size: 16 });
+  const cbGrow = () => {
+    console.log("has eaten");
+    addFoodTimer({ board: currentBoard, timeout: 3000 });
+  }
+
+  var currentBoard = Board({
+    size: 16,
+    cbGrow
+  });
 
   start({ currentBoard, cells });
-
-  /*
-  setTimeout(function () {
-    currentBoard.snake.grow();
-  }, 2100);
-  setTimeout(function () {
-    currentBoard.snake.changeDirection("DOWN");
-  }, 3100);
-  setTimeout(function () {
-    currentBoard.snake.grow();
-  }, 4100);
-  setTimeout(function () {
-    currentBoard.snake.changeDirection("LEFT");
-  }, 5100);
-  */
 });
 
 function start({ currentBoard, cells }) {
@@ -83,10 +76,16 @@ function start({ currentBoard, cells }) {
     updateDraw();
   }, 1000);
 
-  setTimeout(() => {
-    currentBoard.addFood();
-  }, 5000);
+  addFoodTimer({ board: currentBoard });
 }
+
+const addFoodTimer = ({ board, timeout = 5000 }) => {
+  var timer = setTimeout(() => {
+    board.addFood();
+  }, timeout);
+
+  return timer;
+};
 
 function arrowsListener({ cb }) {
   const MOVES = {

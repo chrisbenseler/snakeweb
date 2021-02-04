@@ -1,6 +1,6 @@
 import { Snake } from "./snake.js";
 
-const Board = ({ size = 16 }) => {
+const Board = ({ size = 16, cbGrow }) => {
   const _board = {};
 
   let currentFood = null;
@@ -31,6 +31,7 @@ const Board = ({ size = 16 }) => {
       snake.grow();
       _board[currentFood].food = false;
       currentFood = null;
+      cbGrow();
     }
   };
 
@@ -61,7 +62,6 @@ const Board = ({ size = 16 }) => {
     tick: () => {
       snake.move();
       update();
-      // console.log("snack has moved");
     },
   };
 };
