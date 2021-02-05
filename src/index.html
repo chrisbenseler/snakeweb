@@ -2,39 +2,27 @@
 
 <head>
     <title>Snake</title>
-    <style>
-        #board-container {
-            width: 640px;
-            height: 640px;
-            border: 1px solid red;
-            display: grid;
-            grid-gap: 0;
-            grid-template-rows: repeat(16, 1fr);
-            grid-template-columns: repeat(16, 1fr);
-        }
-        #board-container div.cell {
-            border: 1px solid blue;
-        }
-        #board-container div.cell.hasfood {
-            background-color: red;
-        }
-        #board-container div.cell.hassnake {
-            background-color: blue;
-        }
-    </style>
-    <script type="module" src="./board.js"></script>
-    <script type="module" src="./snake.js"></script>
+    <link type="text/css" rel="stylesheet" href="./styles.css" />
     <script type="module" src="./play.js"></script>
 </head>
 
 <body>
-    <div id="board-container"></div>
 
-    <section id="arrows">
-        <button data-direction="up">Up</button>
-        <button data-direction="down">Down</button>
-        <button data-direction="left">Left</button>
-        <button data-direction="right">Right</button>
+    <section id="main">
+        <h1>Snake</h1>
+        <div id="board-container"></div>
+
+        <section id="arrows">
+            <button data-direction="up">Up</button>
+            <button data-direction="down">Down</button>
+            <button data-direction="left">Left</button>
+            <button data-direction="right">Right</button>
+        </section>
+
+        <footer>
+            Desenvolvido por: Christian Benseler<br />
+            <a href="https://github.com/chrisbenseler/snakeweb" title="Source code">Source</a>
+        </footer>
     </section>
 </body>
 

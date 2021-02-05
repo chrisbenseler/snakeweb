@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var iY = 0; iY < 16; iY++) {
       var cell = document.createElement("div");
       cell.className = "cell";
-      cell.innerHTML = iY + "_" + iX;
+      // cell.innerHTML = iY + "_" + iX;
       cells[iY + "_" + iX] = cell;
       boardContainer.appendChild(cell);
     }
