@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const cbGrow = () => {
     console.log("has eaten");
-    addFoodTimer({ board: currentBoard, timeout: 3000 });
+    addFoodTimer({ board: currentBoard, timeout: 1500 });
   }
 
   var currentBoard = Board({
@@ -74,7 +74,7 @@ function start({ currentBoard, cells }) {
     }
     currentBoard.tick();
     updateDraw();
-  }, 1000);
+  }, 500);
 
   addFoodTimer({ board: currentBoard });
 }
