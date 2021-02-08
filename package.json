@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "jest",
-    "start:local": "http-server src/ -p 8090"
+    "start:local": "http-server src/ -p 8090",
+    "build": "mkdir -p dist/ && cp ./src/**.* ./dist/"
   },
   "repository": {
     "type": "git",
