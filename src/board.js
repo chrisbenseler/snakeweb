@@ -62,6 +62,9 @@ const Board = ({ snake, size, cbGrow }) => {
     tick: () => {
       snake.move();
       update();
+      if(snake.overlap({ head: snake.head(), tail: snake.tail()})) {
+        throw Error("Snake has eaten itself");
+      }
     },
   };
 };

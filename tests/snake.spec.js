@@ -56,4 +56,27 @@ describe("Snake", () => {
       });
 
   });
+
+  describe("Overlap", () => {
+    test("Should overlap head and tail", () => {
+        const head = { x: 1, y: 1 };
+        const tail = [{ x: 0, y: 0}, { x: 0, y: 0}, { x: 1, y: 1}];
+        const isOverlapped = livingSnake.overlap({ head, tail});
+        expect(isOverlapped).toBeTruthy();
+    });
+
+    test("Should not overlap head and tail", () => {
+        const head = { x: 2, y: 1 };
+        const tail = [{ x: 0, y: 0}, { x: 0, y: 0}, { x: 1, y: 1}];
+        const isOverlapped = livingSnake.overlap({ head, tail});
+        expect(isOverlapped).toBeFalsy();
+    });
+
+    test("Should not overlap head and tail", () => {
+        const head = { x: 2, y: 1 };
+        const tail = { x: 2, y: 1 };
+        expect(() => { livingSnake.overlap({ head, tail}) }).toThrowError(TypeError);
+    }); 
+
+  });
 });

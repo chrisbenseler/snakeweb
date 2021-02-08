@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var cells = {};
 
-  for (var iX = 0; iX < 16; iX++) {
-    for (var iY = 0; iY < 16; iY++) {
+  const size = 10;
+
+  for (var iX = 0; iX < size; iX++) {
+    for (var iY = 0; iY < size; iY++) {
       var cell = document.createElement("div");
       cell.className = "cell";
       // cell.innerHTML = iY + "_" + iX;
@@ -17,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const cbGrow = () => {
-    console.log("has eaten");
+    // console.log("has eaten");
     addFoodTimer({ board: currentBoard, timeout: 1500 });
   };
 
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var currentBoard = Board({
     snake,
-    size: 16,
+    size: 10,
     cbGrow,
   });
 
@@ -69,15 +71,20 @@ function start({ currentBoard, cells }) {
     },
   });
 
-  setInterval(function () {
+  const interval = setInterval(function () {
     if (newDirection) {
       try {
         currentBoard.snake.changeDirection(newDirection);
       } catch (e) {}
       newDirection = null;
     }
-    currentBoard.tick();
-    updateDraw();
+    try {
+      currentBoard.tick();
+      updateDraw();
+    } catch (e) {
+      alert(e);
+      clearInterval(interval);
+    }
   }, 500);
 
   addFoodTimer({ board: currentBoard });
