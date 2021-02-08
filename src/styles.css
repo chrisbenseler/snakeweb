@@ -7,6 +7,9 @@ body {
     width: 800px;
     margin: 0 auto;
 }
+header {
+    margin:16px 0;
+}
 h1 {
     text-align: center;
     font-size: 2rem;
@@ -33,6 +36,31 @@ h1 {
 #board-container div.cell.hassnake {
     background-color: blue;
 }
+
+#arrows {
+    margin: 2rem auto 0;
+    width: 20rem;
+    text-align: center;
+}
+
+footer {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/*
+#arrows button:nth-child(2) {
+    clear: both;
+}
+#arrows button:nth-child(3) {
+    clear: both;
+    float: right;
+}
+#arrows button:nth-child(4) {
+    clear: both;
+    margin: 0 auto;
+}
+*/
 
 @media screen and (max-width: 799px) {
     #main {
