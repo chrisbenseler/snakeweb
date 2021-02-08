@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var cells = {};
 
-  for (var iX = 0; iX < 16; iX++) {
-    for (var iY = 0; iY < 16; iY++) {
+  const size = 10;
+
+  for (var iX = 0; iX < size; iX++) {
+    for (var iY = 0; iY < size; iY++) {
       var cell = document.createElement("div");
       cell.className = "cell";
       // cell.innerHTML = iY + "_" + iX;
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var currentBoard = Board({
     snake,
-    size: 16,
+    size: 10,
     cbGrow,
   });
 
