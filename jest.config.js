@@ -1,6 +1,6 @@
 module.exports = {
   verbose: true,
-  testMatch: ["**/+(*.)+(spec).js?(x)"],
+  testMatch: ['**/?(*.)+(spec|test).js'],
   roots: ["<rootDir>/"],
   collectCoverage: true,
   moduleFileExtensions: ["js", "mjs"],

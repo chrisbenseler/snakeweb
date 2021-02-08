@@ -1,4 +1,5 @@
 import { Board } from "./board.js";
+import { Snake } from "./snake.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   var boardContainer = document.getElementById("board-container");
@@ -18,11 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const cbGrow = () => {
     console.log("has eaten");
     addFoodTimer({ board: currentBoard, timeout: 1500 });
-  }
+  };
+
+  const snake = Snake({ headCoordinates: { x: 5, y: 5 } });
 
   var currentBoard = Board({
+    snake,
     size: 16,
-    cbGrow
+    cbGrow,
   });
 
   start({ currentBoard, cells });

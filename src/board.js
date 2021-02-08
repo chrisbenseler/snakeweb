@@ -1,6 +1,6 @@
-import { Snake } from "./snake.js";
 
-const Board = ({ size = 16, cbGrow }) => {
+
+const Board = ({ snake, size, cbGrow }) => {
   const _board = {};
 
   let currentFood = null;
@@ -15,7 +15,7 @@ const Board = ({ size = 16, cbGrow }) => {
         });
     });
 
-  const snake = Snake({ headCoordinates: { x: 5, y: 5 } });
+  
 
   const update = () => {
     const snakeCoords = [snake.head(), ...snake.tail()].map(
