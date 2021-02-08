@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const cbGrow = () => {
-    console.log("has eaten");
+    // console.log("has eaten");
     addFoodTimer({ board: currentBoard, timeout: 1500 });
   };
 
@@ -71,15 +71,20 @@ function start({ currentBoard, cells }) {
     },
   });
 
-  setInterval(function () {
+  const interval = setInterval(function () {
     if (newDirection) {
       try {
         currentBoard.snake.changeDirection(newDirection);
       } catch (e) {}
       newDirection = null;
     }
-    currentBoard.tick();
-    updateDraw();
+    try {
+      currentBoard.tick();
+      updateDraw();
+    } catch (e) {
+      alert(e);
+      clearInterval(interval);
+    }
   }, 500);
 
   addFoodTimer({ board: currentBoard });

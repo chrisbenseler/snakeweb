@@ -48,6 +48,9 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
       tailLength += step;
     },
     overlap: ({ head, tail }) => {
+      if (!Array.isArray(tail))
+        throw TypeError("Tail should be an array");
+
       return tail.some((item) => item.x === head.x && item.y === head.y);
     },
     log: () => {

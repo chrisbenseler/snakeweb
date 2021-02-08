@@ -1,74 +1,61 @@
 body {
-    margin: 0;
-    font-size: 16px;
+  margin: 0;
+  font-size: 16px;
 }
 
 #main {
-    width: 800px;
-    margin: 0 auto;
+  width: 800px;
+  margin: 0 auto;
 }
 header {
-    margin:16px 0;
+  margin: 16px 0;
 }
 h1 {
-    text-align: center;
-    font-size: 2rem;
+  text-align: center;
+  font-size: 2rem;
 }
 #board-container {
-    margin: 0 auto;
-    width: 640px;
-    height: 640px;
-    display: grid;
-    grid-gap: 0;
-    grid-auto-rows: 1fr;
-    grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(10, 1fr);
+  margin: 0 auto;
+  width: 640px;
+  height: 640px;
+  display: grid;
+  grid-gap: 0;
+  grid-auto-rows: 1fr;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
 }
 
 #board-container div.cell {
-    border: 1px solid blue;
+  border: 1px solid blue;
 }
 
 #board-container div.cell.hasfood {
-    background-color: red;
+  background-color: red;
 }
 
 #board-container div.cell.hassnake {
-    background-color: blue;
+  background-color: blue;
 }
 
 #arrows {
-    margin: 2rem auto 0;
-    width: 20rem;
-    text-align: center;
+  margin: 2rem auto 0;
+  width: 20rem;
+  text-align: center;
 }
 
 footer {
-    margin-top: 1rem;
-    text-align: center;
+  margin-top: 1rem;
+  text-align: center;
 }
 
-/*
-#arrows button:nth-child(2) {
-    clear: both;
-}
-#arrows button:nth-child(3) {
-    clear: both;
-    float: right;
-}
-#arrows button:nth-child(4) {
-    clear: both;
-    margin: 0 auto;
-}
-*/
 
 @media screen and (max-width: 799px) {
-    #main {
-        width: 100%;
-        border:1px solid red;
-    }
-    #board-container {
-        width: calc(100% - 32px);
-        height: 100vw;
-    }
+  #main {
+    width: 100%;
+    border: 1px solid red;
   }
+  #board-container {
+    width: calc(100% - 32px);
+    height: 100vw;
+  }
+}
