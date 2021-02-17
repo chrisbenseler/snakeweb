@@ -12,18 +12,23 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var iY = 0; iY < size; iY++) {
       var cell = document.createElement("div");
       cell.className = "cell";
-      // cell.innerHTML = iY + "_" + iX;
       cells[iY + "_" + iX] = cell;
       boardContainer.appendChild(cell);
     }
   }
 
-  const cbGrow = () => {
-    // console.log("has eaten");
+
+  init(cells);
+  
+});
+
+function init(cells) {
+
+  var cbGrow = () => {
     addFoodTimer({ board: currentBoard, timeout: 1500 });
   };
 
-  const snake = Snake({ headCoordinates: { x: 5, y: 5 } });
+  var snake = Snake({ headCoordinates: { x: 5, y: 5 } });
 
   var currentBoard = Board({
     snake,
@@ -32,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   start({ currentBoard, cells });
-});
+}
+
 
 function start({ currentBoard, cells }) {
   const updateDraw = () => {
@@ -84,6 +90,7 @@ function start({ currentBoard, cells }) {
     } catch (e) {
       alert(e);
       clearInterval(interval);
+      init(cells);
     }
   }, 500);
 

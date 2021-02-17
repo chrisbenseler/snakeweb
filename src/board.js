@@ -52,6 +52,10 @@ const Board = ({ snake, size, cbGrow }) => {
 
   update();
 
+  const _isSnakeInBoard = head => {
+    return !(head.x > size - 1 || head.x < 0 || head.y > size - 1 || head.y < 0) 
+  }
+
   return {
     snake,
     update,
@@ -65,6 +69,12 @@ const Board = ({ snake, size, cbGrow }) => {
       if(snake.overlap({ head: snake.head(), tail: snake.tail()})) {
         throw Error("Snake has eaten itself");
       }
+
+      
+      if(!_isSnakeInBoard(snake.head())) {
+        throw Error("Snake is out of bounds");
+      }
+
     },
   };
 };
