@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var iY = 0; iY < size; iY++) {
       var cell = document.createElement("div");
       cell.className = "cell";
-      // cell.innerHTML = iY + "_" + iX;
       cells[iY + "_" + iX] = cell;
       boardContainer.appendChild(cell);
     }
@@ -59,6 +58,7 @@ function start({ currentBoard, cells }) {
         cells[key].classList.remove("hasfood");
       }
     });
+
   };
 
   updateDraw();
