@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var cells = {};
 
-  const size = 24;
+  var size = 24;
 
   for (var iX = 0; iX < size; iX++) {
     for (var iY = 0; iY < size; iY++) {
@@ -40,14 +40,14 @@ function init(cells) {
 }
 
 function start({ currentBoard, cells }) {
-  const updateDraw = () => {
-    const status = currentBoard.status();
+  var updateDraw = () => {
+    var status = currentBoard.status();
 
-    const coordinates = Object.keys(status).filter(
+    var coordinates = Object.keys(status).filter(
       (key) => status[key].snake === true
     );
 
-    const foods = Object.keys(status).filter(
+    var foods = Object.keys(status).filter(
       (key) => status[key].food === true
     );
 
@@ -68,7 +68,7 @@ function start({ currentBoard, cells }) {
 
   updateDraw();
 
-  let newDirection = null;
+  var newDirection = null;
 
   arrowsListener({
     cb: (_direction) => {
@@ -76,7 +76,7 @@ function start({ currentBoard, cells }) {
     },
   });
 
-  const interval = setInterval(function () {
+  var interval = setInterval(function () {
     if (newDirection) {
       try {
         currentBoard.snake.changeDirection(newDirection);
@@ -96,7 +96,7 @@ function start({ currentBoard, cells }) {
   addFoodTimer({ board: currentBoard });
 }
 
-const addFoodTimer = ({ board, timeout = 1500 }) => {
+var addFoodTimer = ({ board, timeout = 1500 }) => {
   var timer = setTimeout(() => {
     board.addFood();
   }, timeout);
@@ -105,7 +105,7 @@ const addFoodTimer = ({ board, timeout = 1500 }) => {
 };
 
 function arrowsListener({ cb }) {
-  const MOVES = {
+  var MOVES = {
     ArrowUp: "UP",
     ArrowDown: "DOWN",
     ArrowRight: "RIGHT",
@@ -121,7 +121,7 @@ function arrowsListener({ cb }) {
   });
 
   document.addEventListener("keyup", function (event) {
-    const direction = MOVES[event.key];
+    var direction = MOVES[event.key];
 
     if (!direction) {
       return;
