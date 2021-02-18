@@ -1,5 +1,3 @@
-
-
 const Board = ({ snake, size, cbGrow }) => {
   const _board = {};
 
@@ -14,8 +12,6 @@ const Board = ({ snake, size, cbGrow }) => {
           _board[indexX + "_" + indexY] = { snake: false };
         });
     });
-
-  
 
   const update = () => {
     const snakeCoords = [snake.head(), ...snake.tail()].map(
@@ -45,16 +41,21 @@ const Board = ({ snake, size, cbGrow }) => {
     );
 
     const randmon = _randomItem(emptyCells);
-    console.log("Adding food in board: ", randmon);
+    // console.log("Adding food in board: ", randmon);
     _board[randmon].food = true;
     currentFood = randmon;
   };
 
   update();
 
-  const _isSnakeInBoard = head => {
-    return !(head.x > size - 1 || head.x < 0 || head.y > size - 1 || head.y < 0) 
-  }
+  const _isSnakeInBoard = (head) => {
+    return !(
+      head.x > size - 1 ||
+      head.x < 0 ||
+      head.y > size - 1 ||
+      head.y < 0
+    );
+  };
 
   return {
     snake,
@@ -66,15 +67,13 @@ const Board = ({ snake, size, cbGrow }) => {
     tick: () => {
       snake.move();
       update();
-      if(snake.overlap({ head: snake.head(), tail: snake.tail()})) {
+      if (snake.overlap({ head: snake.head(), tail: snake.tail() })) {
         throw Error("Snake has eaten itself");
       }
 
-      
-      if(!_isSnakeInBoard(snake.head())) {
+      if (!_isSnakeInBoard(snake.head())) {
         throw Error("Snake is out of bounds");
       }
-
     },
   };
 };

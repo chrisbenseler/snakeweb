@@ -21,10 +21,6 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
       const _nextHead = { x: head.x + movement.x, y: head.y + movement.y };
       head = { ..._nextHead };
       tail = [_currentHead, ...tail].slice(0, tailLength);
-
-      if (tail.indexOf(head) >= 0) {
-        console.error("Some error");
-      }
     },
     changeDirection: (key) => {
       if (!MOVES.hasOwnProperty(key)) {
@@ -52,14 +48,7 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
         throw TypeError("Tail should be an array");
 
       return tail.some((item) => item.x === head.x && item.y === head.y);
-    },
-    log: () => {
-      console.log({
-        head,
-        tail,
-        currentDirection,
-      });
-    },
+    }
   };
 };
 
