@@ -1,6 +1,8 @@
 body {
   margin: 0;
   font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background: #DDDDDD;
 }
 
 #main {
@@ -12,32 +14,47 @@ header {
 }
 h1 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
+  margin: 1rem 0;
 }
 #board-container {
   margin: 0 auto;
-  width: 640px;
-  height: 640px;
+  width: 600px;
+  height: 600px;
   display: grid;
   grid-gap: 0;
   grid-auto-rows: 1fr;
-  grid-template-rows: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  grid-template-columns: repeat(24, 1fr);
+  border: 4px dotted #666;
+  background-color: #FAFAFA;
 }
 
 #board-container div.cell {
-  border: 1px solid blue;
 }
 
 #board-container div.cell.hasfood {
-  background-color: red;
+  background-image: linear-gradient(45deg, #00EE00 25%, transparent 25%),
+    linear-gradient(-45deg, #00EE00 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #00EE00 75%),
+    linear-gradient(-45deg, transparent 75%, #00EE00 75%);
+  background-size: 2px 2px;
+  -webkit-background-size: 2px 2px; /* override value for webkit */
+  background-position: 0 0, 1px 0, 1px -1px, 0px 1px;
 }
 
 #board-container div.cell.hassnake {
-  background-color: blue;
+  
+  background-image: linear-gradient(45deg, #666 25%, transparent 25%),
+    linear-gradient(-45deg, #666 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #666 75%),
+    linear-gradient(-45deg, transparent 75%, #666 75%);
+  background-size: 2px 2px;
+  -webkit-background-size: 2px 2px; /* override value for webkit */
+  background-position: 0 0, 1px 0, 1px -1px, 0px 1px;
 }
 
-#arrows {
+#arrows, #controls {
   margin: 2rem auto 0;
   width: 20rem;
   text-align: center;
@@ -47,7 +64,6 @@ footer {
   margin-top: 1rem;
   text-align: center;
 }
-
 
 @media screen and (max-width: 799px) {
   #main {

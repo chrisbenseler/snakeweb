@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var cells = {};
 
-  const size = 10;
+  const size = 24;
 
   for (var iX = 0; iX < size; iX++) {
     for (var iY = 0; iY < size; iY++) {
@@ -17,28 +17,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-
-  init(cells);
-  
+  var startButton = document.getElementById("controls-start");
+  startButton.addEventListener("click", function (event) {
+    init(cells);
+  });
 });
 
 function init(cells) {
-
   var cbGrow = () => {
-    addFoodTimer({ board: currentBoard, timeout: 1500 });
+    addFoodTimer({ board: currentBoard, timeout: 500 });
   };
 
-  var snake = Snake({ headCoordinates: { x: 5, y: 5 } });
+  var snake = Snake({ headCoordinates: { x: 11, y: 11 } });
 
   var currentBoard = Board({
     snake,
-    size: 10,
+    size: 24,
     cbGrow,
   });
 
   start({ currentBoard, cells });
 }
-
 
 function start({ currentBoard, cells }) {
   const updateDraw = () => {
@@ -90,14 +89,14 @@ function start({ currentBoard, cells }) {
     } catch (e) {
       alert(e);
       clearInterval(interval);
-      init(cells);
+      // init(cells);
     }
-  }, 500);
+  }, 250);
 
   addFoodTimer({ board: currentBoard });
 }
 
-const addFoodTimer = ({ board, timeout = 5000 }) => {
+const addFoodTimer = ({ board, timeout = 1500 }) => {
   var timer = setTimeout(() => {
     board.addFood();
   }, timeout);
