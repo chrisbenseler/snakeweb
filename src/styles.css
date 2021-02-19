@@ -68,7 +68,6 @@ footer {
 @media screen and (max-width: 799px) {
   #main {
     width: 100%;
-    border: 1px solid red;
   }
   #board-container {
     width: calc(100% - 32px);
