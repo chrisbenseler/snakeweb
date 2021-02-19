@@ -41,7 +41,6 @@ const Board = ({ snake, size, cbGrow }) => {
     );
 
     const randmon = _randomItem(emptyCells);
-    // console.log("Adding food in board: ", randmon);
     _board[randmon].food = true;
     currentFood = randmon;
   };

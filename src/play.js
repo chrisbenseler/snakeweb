@@ -89,7 +89,6 @@ function start({ currentBoard, cells }) {
     } catch (e) {
       alert(e);
       clearInterval(interval);
-      // init(cells);
     }
   }, 250);
 
@@ -110,9 +109,14 @@ function arrowsListener({ cb }) {
     ArrowDown: "DOWN",
     ArrowRight: "RIGHT",
     ArrowLeft: "LEFT",
+    8: "UP",
+    2: "DOWN",
+    6: "RIGHT",
+    4: "LEFT",
   };
   var container = document.getElementById("arrows");
   container.addEventListener("click", function (event) {
+    event.preventDefault();
     var dataset = event.target.dataset;
     if (!dataset) {
       return false;
