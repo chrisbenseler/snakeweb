@@ -116,6 +116,7 @@ function arrowsListener({ cb }) {
   };
   var container = document.getElementById("arrows");
   container.addEventListener("click", function (event) {
+    event.preventDefault();
     var dataset = event.target.dataset;
     if (!dataset) {
       return false;
