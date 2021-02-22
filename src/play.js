@@ -6,13 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var cells = {};
 
-  var size = 24;
+  var sizeX = 12;
+  var sizeY = 8;
 
-  for (var iX = 0; iX < size; iX++) {
-    for (var iY = 0; iY < size; iY++) {
+  for (var iY = 0; iY < sizeY; iY++) {
+    for (var iX = 0; iX < sizeX; iX++) {
       var cell = document.createElement("div");
-      cell.className = "cell";
-      cells[iY + "_" + iX] = cell;
+      cell.className = "cell " + iX + "_" + iY;
+      cells[iX + "_" + iY] = cell;
       boardContainer.appendChild(cell);
     }
   }
@@ -28,11 +29,12 @@ function init(cells) {
     addFoodTimer({ board: currentBoard, timeout: 500 });
   };
 
-  var snake = Snake({ headCoordinates: { x: 11, y: 11 } });
+  var snake = Snake({ headCoordinates: { x: 4, y: 4 } });
 
   var currentBoard = Board({
     snake,
-    size: 24,
+    sizeX: 12,
+    sizeY: 8,
     cbGrow,
   });
 
@@ -47,9 +49,7 @@ function start({ currentBoard, cells }) {
       (key) => status[key].snake === true
     );
 
-    var foods = Object.keys(status).filter(
-      (key) => status[key].food === true
-    );
+    var foods = Object.keys(status).filter((key) => status[key].food === true);
 
     Object.keys(cells).forEach((key) => {
       if (coordinates.indexOf(key) >= 0) {
