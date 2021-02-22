@@ -19,13 +19,13 @@ h1 {
 }
 #board-container {
   margin: 0 auto;
-  width: 600px;
-  height: 600px;
+  width: 480px;
+  height: 320px;
   display: grid;
   grid-gap: 0;
   grid-auto-rows: 1fr;
-  grid-template-rows: repeat(24, 1fr);
-  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   border: 4px dotted #666;
   background-color: #FAFAFA;
 }
@@ -52,16 +52,18 @@ h1 {
 }
 
 #arrows button {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 0.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
 }
 #arrows button:first-child {
   margin-top: 0;
 }
-#arrows button:nth-child(1) {
+#arrows > div > button:nth-child(1) {
   margin-right: 1rem;
 }
-#arrows button:nth-child(2) {
+#arrows > div > button:nth-child(2) {
   margin-left: 1rem;
 }
 
@@ -83,6 +85,6 @@ footer {
   }
   #board-container {
     width: 90vw;
-    height: 90vw;
+    height: 60vw;
   }
 }
