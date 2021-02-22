@@ -1,12 +1,12 @@
-const Board = ({ snake, size, cbGrow }) => {
+const Board = ({ snake, sizeX, sizeY, cbGrow }) => {
   const _board = {};
 
   let currentFood = null;
 
-  Array(size)
+  Array(sizeX)
     .fill()
     .forEach((_, indexX) => {
-      Array(size)
+      Array(sizeY)
         .fill()
         .forEach((_, indexY) => {
           _board[indexX + "_" + indexY] = { snake: false };
@@ -49,9 +49,9 @@ const Board = ({ snake, size, cbGrow }) => {
 
   const _isSnakeInBoard = (head) => {
     return !(
-      head.x > size - 1 ||
+      head.x > sizeX - 1 ||
       head.x < 0 ||
-      head.y > size - 1 ||
+      head.y > sizeY - 1 ||
       head.y < 0
     );
   };
