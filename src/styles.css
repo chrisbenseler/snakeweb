@@ -78,7 +78,10 @@ footer {
   word-wrap: break-word;
   text-align: center;
 }
-
+.disclaimer-buttons {
+  margin-top: 1rem;
+  text-align: center;
+}
 @media screen and (max-width: 799px) {
   #main {
     width: 100%;
@@ -86,5 +89,8 @@ footer {
   #board-container {
     width: 90vw;
     height: 60vw;
+  }
+  .disclaimer-buttons {
+    display: none;
   }
 }
