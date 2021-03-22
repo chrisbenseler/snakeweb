@@ -22,6 +22,7 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
     const _nextHead = { x: head.x + movement.x, y: head.y + movement.y };
     head = { ..._nextHead };
     tail = [_currentHead, ...tail].slice(0, tailLength);
+    return [head, ...tail];
   };
 
   const changeDirection = (key) => {
@@ -45,6 +46,7 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
 
   const grow = (step = 1) => {
     tailLength += step;
+    return tailLength;
   };
 
   return {
