@@ -7,7 +7,7 @@ let livingSnake = null;
 
 describe("Snake", () => {
   beforeEach(() => {
-    livingSnake = Snake({});
+    livingSnake = Snake({ headCoordinates: { x: 1, y: 1 } });
   });
 
   test("Should create", () => {
@@ -32,10 +32,10 @@ describe("Snake", () => {
     });
 
     test("Should move to valid direction", () => {
-        expect(() => {
-          livingSnake.changeDirection("ANYWAY");
-        }).toThrowError(RangeError);
-      });
+      expect(() => {
+        livingSnake.changeDirection("ANYWAY");
+      }).toThrowError(RangeError);
+    });
 
     test("Should change direction", () => {
       livingSnake.changeDirection("UP");
@@ -50,33 +50,60 @@ describe("Snake", () => {
     });
 
     test("Should not go backwards", () => {
-        expect(() => {
-          livingSnake.changeDirection("LEFT");
-        }).toThrowError("Snake cannot move backwards");
-      });
-
+      expect(() => {
+        livingSnake.changeDirection("LEFT");
+      }).toThrowError("Snake cannot move backwards");
+    });
   });
 
   describe("Overlap", () => {
     test("Should overlap head and tail", () => {
-        const head = { x: 1, y: 1 };
-        const tail = [{ x: 0, y: 0}, { x: 0, y: 0}, { x: 1, y: 1}];
-        const isOverlapped = livingSnake.overlap({ head, tail});
-        expect(isOverlapped).toBeTruthy();
+      const head = { x: 1, y: 1 };
+      const tail = [
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 1, y: 1 },
+      ];
+      const isOverlapped = livingSnake.overlap({ head, tail });
+      expect(isOverlapped).toBeTruthy();
     });
 
     test("Should not overlap head and tail", () => {
-        const head = { x: 2, y: 1 };
-        const tail = [{ x: 0, y: 0}, { x: 0, y: 0}, { x: 1, y: 1}];
-        const isOverlapped = livingSnake.overlap({ head, tail});
-        expect(isOverlapped).toBeFalsy();
+      const head = { x: 2, y: 1 };
+      const tail = [
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 1, y: 1 },
+      ];
+      const isOverlapped = livingSnake.overlap({ head, tail });
+      expect(isOverlapped).toBeFalsy();
     });
 
     test("Should not overlap head and tail", () => {
-        const head = { x: 2, y: 1 };
-        const tail = { x: 2, y: 1 };
-        expect(() => { livingSnake.overlap({ head, tail}) }).toThrowError(TypeError);
-    }); 
+      const head = { x: 2, y: 1 };
+      const tail = { x: 2, y: 1 };
+      expect(() => {
+        livingSnake.overlap({ head, tail });
+      }).toThrowError(TypeError);
+    });
+  });
 
+  describe("move", () => {
+    it("Should move to next position", () => {
+      const currentHead = livingSnake.head();
+      const newSnakePositions = livingSnake.move();
+      expect(newSnakePositions[0].x).toBe(currentHead.x + 1);
+    });
+  });
+
+  describe("grow", () => {
+    it("Should grow default - new tail length", () => {
+      const result = livingSnake.grow();
+      expect(result).toBe(1);
+    });
+
+    it("Should grow custom step - new tail length", () => {
+      expect(livingSnake.grow(3)).toBe(3);
+    });
   });
 });
