@@ -58,7 +58,8 @@ h1 {
   height: 3.5rem;
   text-align: center;
   border-radius: 0.5rem;
-  border-style: solid;
+  background-color: #CCCCCC;
+  border: 1px solid black;
 }
 #arrows button:hover {
   cursor: pointer;
