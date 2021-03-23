@@ -40,9 +40,9 @@ const Board = ({ snake, sizeX, sizeY, cbGrow }) => {
       (key) => snakeCoords.indexOf(key) < 0
     );
 
-    const randmon = _randomItem(emptyCells);
-    _board[randmon].food = true;
-    currentFood = randmon;
+    const random = _randomItem(emptyCells);
+    _board[random].food = true;
+    currentFood = random;
   };
 
   update();
