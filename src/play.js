@@ -1,6 +1,7 @@
 import { Board } from "./board.js";
 import { Snake } from "./snake.js";
 
+
 document.addEventListener("DOMContentLoaded", function () {
   var boardContainer = document.getElementById("board-container");
 

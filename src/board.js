@@ -1,17 +1,7 @@
 const Board = ({ snake, sizeX, sizeY, cbGrow }) => {
-  const _board = {};
+  const _board = _init(sizeX, sizeY);
 
   let currentFood = null;
-
-  Array(sizeX)
-    .fill()
-    .forEach((_, indexX) => {
-      Array(sizeY)
-        .fill()
-        .forEach((_, indexY) => {
-          _board[indexX + "_" + indexY] = { snake: false };
-        });
-    });
 
   const update = () => {
     const snakeCoords = [snake.head(), ...snake.tail()].map(
@@ -32,20 +22,8 @@ const Board = ({ snake, sizeX, sizeY, cbGrow }) => {
   };
 
   const addFood = () => {
-    const snakeCoords = [snake.head(), ...snake.tail()].map(
-      (c) => c.x + "_" + c.y
-    );
-
-    const emptyCells = Object.keys(_board).filter(
-      (key) => snakeCoords.indexOf(key) < 0
-    );
-
-    const random = _randomItem(emptyCells);
-    _board[random].food = true;
-    currentFood = random;
+    currentFood = _addFood(snake, _board);
   };
-
-  update();
 
   const _isSnakeInBoard = (head) => {
     return !(
@@ -55,6 +33,8 @@ const Board = ({ snake, sizeX, sizeY, cbGrow }) => {
       head.y < 0
     );
   };
+
+  update();
 
   return {
     snake,
@@ -78,5 +58,33 @@ const Board = ({ snake, sizeX, sizeY, cbGrow }) => {
 };
 
 const _randomItem = (items) => items[Math.floor(Math.random() * items.length)];
+
+const _init = (sizeX, sizeY) => {
+  const _board = {};
+  Array(sizeX)
+    .fill()
+    .forEach((_, indexX) => {
+      Array(sizeY)
+        .fill()
+        .forEach((_, indexY) => {
+          _board[indexX + "_" + indexY] = { snake: false };
+        });
+    });
+  return _board;
+};
+
+const _addFood = (snake, _board) => {
+  const snakeCoords = [snake.head(), ...snake.tail()].map(
+    (c) => c.x + "_" + c.y
+  );
+
+  const emptyCells = Object.keys(_board).filter(
+    (key) => snakeCoords.indexOf(key) < 0
+  );
+
+  const random = _randomItem(emptyCells);
+  _board[random].food = true;
+  return random;
+};
 
 export { Board };

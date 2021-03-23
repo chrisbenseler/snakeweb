@@ -34,10 +34,10 @@ const Snake = ({ headCoordinates, direction = "RIGHT" }) => {
       throw new Error("Snake is already in this direction");
     }
     if (
-      (key == "UP" && currentDirection === "DOWN") ||
-      (key == "DOWN" && currentDirection === "UP") ||
-      (key == "RIGHT" && currentDirection === "LEFT") ||
-      (key == "LEFT" && currentDirection === "RIGHT")
+      (key === "UP" && currentDirection === "DOWN") ||
+      (key === "DOWN" && currentDirection === "UP") ||
+      (key === "RIGHT" && currentDirection === "LEFT") ||
+      (key === "LEFT" && currentDirection === "RIGHT")
     ) {
       throw new Error("Snake cannot move backwards");
     }
