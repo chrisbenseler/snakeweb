@@ -87,4 +87,4 @@ const _addFood = (snake, _board) => {
   return random;
 };
 
-export { Board };
+export { Board, _randomItem };
